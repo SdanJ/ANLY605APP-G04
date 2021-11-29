@@ -44,7 +44,7 @@ def hello_world():
 
         # Load and Create Dataframe
         #import pandas as pd
-        filename = 'ObesityDataSet_raw_and_data_sinthetic.csv'
+        filename = 'app/ObesityDataSet_raw_and_data_sinthetic.csv'
         df = pd.read_csv(filename, header=0)
         df = pd.DataFrame(df)
         #boston = load_boston()
@@ -78,11 +78,11 @@ def hello_world():
         for f in files:
           print(f)
         np_arr = floatsome_to_np_array(text).reshape(1, -1)
-        pkl_filename="TrainedModel/AssignmentPickle.pkl"
+        pkl_filename="app/TrainedModel/AssignmentPickle.pkl"
         with open(pkl_filename, 'rb') as file:
             pickle_model = pickle.load(file)
         plot_graphs(model=pickle_model,new_input_arr=np_arr,output_file= path)
-        return render_template("index.html",href=path)
+        return render_template("index.html",href=path[4:])
 
 
 def plot_graphs(model,new_input_arr, output_file):
@@ -90,7 +90,7 @@ def plot_graphs(model,new_input_arr, output_file):
     import matplotlib
     matplotlib.use('Agg')
     
-    filename = 'ObesityDataSet_raw_and_data_sinthetic.csv'
+    filename = 'app/ObesityDataSet_raw_and_data_sinthetic.csv'
     df = pd.read_csv(filename, header=0)
     df = pd.DataFrame(df)
     #boston = load_boston()
@@ -155,49 +155,46 @@ def plot_graphs(model,new_input_arr, output_file):
         cols = colors[0]
         syms = symbols[0]
         fig.scatter(Height_input, Weight_input,color='black',marker=syms,s=900)
-        fig.figure.savefig(output_file,width=1200)
+        fig.figure.savefig(output_file)
 
     
     if new_preds[0]==5:
         cols = colors[1]
         syms = symbols[1]
         fig.scatter(Height_input, Weight_input,color='black',marker=syms,s=900)
-        fig.figure.savefig(output_file,width=1200)
+        fig.figure.savefig(output_file)
         
         
     if new_preds[0]==6:
         cols = colors[2]
         syms = symbols[2]
         fig.scatter(Height_input, Weight_input,color='black',marker=syms,s=900)
-        fig.figure.savefig(output_file,width=1200)
+        fig.figure.savefig(output_file)
         
     if new_preds[0]==2:
         cols = colors[3]
         syms = symbols[3]
         fig.scatter(Height_input, Weight_input,color='black',marker=syms,s=900)
-        fig.figure.savefig(output_file,width=1200)
+        fig.figure.savefig(output_file)
         
     if new_preds[0]==0:
         cols = colors[4]
         syms = symbols[4] 
         fig.scatter(Height_input, Weight_input,color='black',marker=syms,s=900)
-        fig.figure.savefig(output_file,width=1200)
+        fig.figure.savefig(output_file)
         
     if new_preds[0]==3:
         cols = colors[5]
         syms = symbols[5]
         fig.scatter(Height_input, Weight_input,color='black',marker=syms,s=900)
-        fig.figure.savefig(output_file,width=1200)
+        fig.figure.savefig(output_file)
         
     if new_preds[0]==4:
         cols = colors[6]
         syms = symbols[6]
         fig.scatter(Height_input, Weight_input,color='black',marker=syms,s=900)
-        fig.figure.savefig(output_file,width=1200)
+        fig.figure.savefig(output_file)
     
-
-
-
 
 
     # Update xaxis properties  
